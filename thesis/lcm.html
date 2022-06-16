@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+	<title>Transportation Problem calculator</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous">
+
+  <style>
+    body {
+        padding: 30px;
+    }
+
+    h1 {
+        font-style: italic;
+        text-align: center;
+    }
+
+    h2 {
+        font-style: italic;
+    }
+
+    h3 {
+        font-style: italic;
+        font-weight: normal;
+    }
+
+
+    p {
+        text-align: justify;
+        text-indent: 50px;
+    }
+
+    allIndent {
+        text-align: justify;
+        text-indent: 0px !important;
+        padding-left: 50px;
+    }
+
+    table {
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: 90%;
+        margin: 10px auto;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    table.col5 td {
+        width: 20%;
+    }
+
+    table.col6 td {
+        width: 16.6%;
+    }
+
+    table.col7 td {
+        width: 14%;
+    }
+
+    table.col8 td {
+        width: 12.5%;
+    }
+
+    table.col9 td {
+        width: 11%;
+    }
+
+    table.col10 td {
+        width: 10%;
+    }
+
+    td p {
+        padding: 0;
+        margin: 0;
+        width: 90%;
+    }
+
+    td p.fl {
+        text-indent: 0px !important;
+        text-align: left;
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+
+    td p.sl {
+        text-indent: 0px !important;
+        text-align: right;
+        margin-bottom: 5px;
+    }
+
+    .markGray {
+        background-color: rgb(202, 201, 201);
+        padding: 0px 5px;
+    }
+
+    .markRed {
+        background-color: rgb(250, 135, 135);
+        padding: 0px 5px;
+    }
+
+    .ec_calculator_gen {
+    text-align: center;
+    margin: 10px 20px;
+    padding: 5px;
+    background: #F7DC6F;
+    border-radius: 7px;
+    box-sizing: border-box;
+    }
+    
+    .ec_calculator_gen input[type=text], .ec_calculator_gen input[type=tel], .ec_calculator_gen input[type=number] {
+    background: #fff;
+    border-top: #ccc 1px solid;
+    border-left: #ccc 1px solid;
+    border-bottom: #b2aca5 1px solid;
+    border-right: #b2aca5 1px solid;
+    border-radius: 5px;
+    box-shadow: 0 -2px 5px -4px rgb(0 0 0 / 30%);
+    font-family: Tahoma,Geneva,sans-serif;
+    color: #717070;
+    font-size: 14px;
+    margin: 2px;
+    margin-botom: 2px;
+    padding: 7px 5px;
+    box-sizing: border-box;
+    width: 99%;
+    }
+
+    .ec_calculator_gen input[type=reset], .ec_calculator_gen input[type=button] {
+    background: #4C4C4C;
+    border-radius: 7px;
+    text-align: center;
+    font-family: Arial,Helvetica,sans-serif;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    height: 38px;
+    margin: center;
+    cursor: pointer;
+    box-sizing: border-box;
+      width: 49%;
+}
+  </style>
+
+</head>
+
+
+  <body>  
+    <!-- Navbar -->	
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">      
+      <div class="container">        
+        <a href="index.html" class="navbar-brand">          
+           Transportation Problem        
+        </a>        
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a href="nwcr.html" class="nav-link">NWCR</a>
+            </li>
+            <li class="nav-item">
+              <a href="lcm.html" class="nav-link">LCM</a>
+            </li>
+            <li class="nav-item">
+              <a href="vam.html" class="nav-link">VAM</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar -->
+    
+    <section>
+      <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between">
+          <div>
+            <h1 class="ttl"><span class="text-warning"> Least - Cost Method </span> Calculator</h1>
+            <p class="lead my-4">
+              Solve Transpotation Problems  
+            </p>
+          </div>          
+        </div>
+      </div>
+    </section>
+ 
+     <section>
+  <div class="container-md">
+    <div class="clear"> </div>
+    
+    <h1 class="title"> Least Cost Method Calculator</h1>
+  </br>
+     <!-- ec_calculator begins -->
+    
+     <div class="ec_calculator_gen clearfix">
+		<div class='clear'></div>
+	<form name=first>
+	 <div id="overlayLoader">
+		    <div class="loader"> </div>
+		</div>
+		<div id="dispCalcConts">     		<div class='group clearfix'>
+     		<label>Number of Rows  </label>
+     		<input type=text id=nrw size=5 class='easypositive'>
+     		</div>
+<div class='group clearfix'>
+<label>Number of Columns  </label>
+<input type=text id=ncn size=5  class='easypositive'>
+</div>
+
+<!--frtab matrix icin -->
+<div class='group clearfix'>
+<input type=button value=Create onclick='matrix_form()'>
+<input type=reset value=Reset onclick='clear_all()'>
+</div>
+<div id=frtab class='table'></div>
+<div  class='result'>
+    <div id=result class='table'></div>
+ </div></div>	</form>
+     </div>
+  </br>    
+    
+    <!-- ec_calculator ends -->
+     <div class="clear"> </div>
+  </div>
+  </section>
+
+    <div class="mt-3 col-md-12">
+    </div>
+    
+    <section>      
+      <div class="container-md">
+        <h1> Least cost method </h1>    
+        <p>The Least Cost Method is a method that is used for determining the most cost-effective first solution to a transportation problem.
+        </p>   
+        <p>The allocation process starts with the cell having the lowest cost. With the goal of having the lowest transportation cost, the lower-cost cells are picked above the higher-cost cells. 
+        </p>
+        <p>The Least Cost Method is presumed to produce better results than the North-West Corner Method because it takes shipping costs into account when allocating resources, 
+whereas the North-West Corner Method only considers availability and supply requirements and starts allocating resources from the extreme left corner, regardless of shipping costs.
+        </p>
+        <p>In Least - Cost Method allocate min(A<sub>i</sub>,B<sub>j</sub>) to the cell having lowest cost in the matrix.</p>
+        <p>Ignore the satisfied row and column, carry on allocations on the same way for the remaining submatrix. </p>
+        <p>In case of tie, choose a cell which can accomadate max allocation or select arbitrary.</p>
+        
+    <p>Starting matrix for transportation problem can be shown as </p>
+    <table class="cal5">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl"><b>D<sub>1</sub></b></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"><b>D<sub>2</sub></b></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"><b>...</b></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+            <p class="fl"><b>D<sub>n</sub</b></p>
+            <p class="sl"> &nbsp;</p>
+          </td>
+            <td>
+                <p class="fl"><b>SUP</b></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl"><b>S<sub>1</sub></b></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">C<sub>11</sub></p>
+                <p class="sl"> <b>X<sub>11</sub></b></p>
+            </td>
+            <td>
+                <p class="fl">C<sub>12</sub></p>
+                <p class="sl"><b>X<sub>12</sub></b> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">...</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+            <p class="fl">C<sub>1n</sub></p>
+            <p class="sl"><b>X<sub>1n</sub></b> &nbsp;</p>
+          </td>
+            <td>
+                <p class="fl">a<sub>1</sub></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl"><b>S<sub>2</sub></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">C<sub>21</sub></p>
+                <p class="sl"><b>X<sub>21</sub></b> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">C<sub>22</sub></p>
+                <p class="sl"><b>X<sub>22</sub></b>  &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">... </p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+            <p class="fl">C<sub>2n</sub></p>
+            <p class="sl"><b>X<sub>2n</sub></b> &nbsp;</p>
+          </td>
+            <td>
+                <p class="fl">a<sub>2</sub></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">...</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"><sub>...</sub></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">...</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+            <p class="fl"></p>
+            <p class="sl"> &nbsp;</p>
+          </td>
+            <td>
+                <p class="fl">...</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">...</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+      <tr>
+            <td>
+                <p class="fl"><b>S<sub>m</sub></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">C<sub>m1</sub></p>
+                <p class="sl"><b>X<sub>m1</sub></b> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">C<sub>m2</sub></p>
+                <p class="sl"><b>X<sub>m2</sub></b>  &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">... </p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+            <p class="fl">C<sub>mn</sub></p>
+            <p class="sl"><b>X<sub>mn</sub></b> &nbsp;</p>
+          </td>
+            <td>
+                <p class="fl">a<sub>j</sub></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl"><b>Dem </p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">b<sub>1</sub></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">b<sub>2</sub></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+            <p class="fl">....</p>
+            <p class="sl"> &nbsp;</p>
+          </td>
+            <td>
+                <p class="fl">b<sub>j</sub></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">total</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+        
+    <h2>Steps for Least Cost Method:</h2>
+    <ol>
+        <li>Choose the cell with the minimum unit cost, C<sub>ij</sub>, and allocate as much as possible, i.e., 
+ minimum (A<sub>1</sub>, B<sub>1</sub>) </li>
+        <li>
+    </break>
+          <ol>
+            <li>Take this minimum value and subtract it from supply A<sub>i</sub> and demand B<sub>i</sub> </li>
+            <li>Cross that row if the supply A<sub>i</sub>  is 0, and cross that column if the demand B<sub>i</sub> is 0. </li>
+            <li>If the min unit cost cell is not unique, choose the cell with the highest possible allocation. </li>            
+          </ol>
+    </li>
+        <li>Repeat the steps until all Supply and Demand values are 0.</li>
+    </ol>
+    <p>(Note that the null row is added to make supply and demand values equal.)</p>
+  
+<p> remember, no allocation can be negative (-) but might be 0.</p>
+    
+        <h2>Example</h2>
+
+    <p class="allIndent">Solve the transportation matrix by using Least-Cost Method:<br /><br />
+        Total number of “supply” constraints: 3<br />
+        Total number of “demand” constraints: 4<br />
+        Problem table is
+    </p>
+
+    <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">5</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">30</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">6</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">9</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">5</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">8</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">55</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">15</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">20</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">50</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">=125</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+        
+<h2>Solution</h2>
+        
+    <h3>1<sup>st</sup> step:</h3>
+    <p class="allIndent">
+        The smallest transportation cost is “1” in cell C<sub>34</sub><br />
+        The allocation to this cell in min (55,50) = 50.<br />
+        This satisfies the entire demand of B<sub>4</sub> and leaves 55-50=5 units with A<sub>3<br />
+    </p>
+    <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">5</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl">/&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">30</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">6</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">9</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">5</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">8</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl">50 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">5</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">15</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">20</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">=125</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+
+    <h3>2<sup>nd</sup> step:</h3>
+    <p class="allIndent">
+        The smallest transportation cost is “2” in cells C<sub>12</sub> and C<sub>31</sub><br/>
+      since C<sub>34</sub> in previous step, we will continue with C<sub>31</sub><br/>
+        The allocation to this cell in min (15,5) = 5<br/>
+        This satisfies the entire "Supply" of A<sub>3</sub> and leaves 15-5=10 units for B<sub>1<br/>
+    </p>
+        
+    <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">5</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl">/&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">30</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">6</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">9</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">5</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> 5 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">8</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl">50 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">20</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">=125</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+
+    <h3>3<sup>rd</sup> step:</h3>
+    <p class="allIndent">
+        The smallest transportation cost is “2” in cell C<sub>12</sub> <br/>
+        The allocation to this cell in min (20,30) = 20<br/>
+        This satisfies the entire "Demand" of B<sub>2</sub> and leaves 30-20=10 units for A<sub>1<br/>
+    </p>
+        
+    <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">5</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl">20 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl">/&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">6</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">9</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">5</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> 5 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">8</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl">50 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">=125</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+
+    <h3>4<sup>th</sup> step:</h3>
+    <p class="allIndent">
+        The smallest transportation cost is “4” in cell C<sub>13</sub> <br/>
+        The allocation to this cell in min (10,40) = 10<br/>
+        This satisfies the entire "Supply" of A<sub>1</sub> and leaves 40-10=30 units for B<sub>3<br/>
+    </p>
+        
+    <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">5</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl">20 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> 10&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl">/&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">6</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">9</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">5</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> 5 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">8</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl">50 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">30</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">=125</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+
+    <h3>5<sup>th</sup> step:</h3>
+          <p class="allIndent">
+        The smallest transportation cost is “6” in cell C<sub>21</sub> <br/>
+        The allocation to this cell in min (10,40) = 10<br/>
+        This satisfies the entire "Demand" of B<sub>1</sub> and leaves 40-10=30 units for A<sub>2<br/>
+    </p>
+        
+    <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">5</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl">20 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> 10&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl">/&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">6</p>
+                <p class="sl"> 10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">9</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">5</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">30</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> 5 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">8</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl">50 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">30</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">=125</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+          
+    <h3>6<sup>th</sup> step:</h3>
+           <p class="allIndent">
+        The smallest transportation cost is “9” in cell C<sub>23</sub> <br/>
+        The allocation to this cell in min (30,30) = 30<br/>
+        This satisfies the entire "Demand" of B<sub>3</sub> and A<sub>2<br/>
+    </p>
+        
+    <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">5</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl">20 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> 10&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl">/&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">6</p>
+                <p class="sl"> 10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">9</p>
+                <p class="sl"> 30&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">5</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> 5 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">8</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl">50 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">=125</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+
+    <h3>7<sup>th</sup> step:</h3>
+    <p class="allIndent">
+        Our initial basic feasible table is
+    </p>
+    <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"></p>
+                <p class="sl"></p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> 20 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> 10&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"></p>
+                <p class="sl"></p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">6</p>
+                <p class="sl">10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">9</p>
+                <p class="sl">30</p>
+            </td>
+            <td>
+                <p class="fl"></p>
+                <p class="sl"></p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> 5&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"></p>
+                <p class="sl"></p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> 50</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+    <p class="allIndent">
+        To calculate the min transportation cost we multiply the min cost value and the unit value in each cell and sum
+        up all the values: <br /><br />
+
+        (2*20) + (4*10) + (6*10) + (9*30) + (2*5) + (1*50) = 470 IBFS.
+    </p>
+      </div>           
+    </section>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	 crossorigin="anonymous">    
+    </script>
+  
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous">
+      
+  </script>	
+    <script src="lcm.js"></script>
+
+  
+    <div class="mt-3 col-md-12">
+    </div>
+  
+
+    <footer class="text-white bg-dark">  
+      <div class="text-center p-3" style="background-color: ">
+    2022 Thesis Project    
+        <a class="text-dark"  
+          </div>
+    </footer>
+
+</body>
+
+</html>

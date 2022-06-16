@@ -1,0 +1,5790 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Transportation Problem calculator</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	 crossorigin="anonymous">
+
+<style>
+    body {
+        padding: 30px;
+    }
+
+    h1 {
+        font-style: italic;
+        text-align: center;
+    }
+
+    h2 {
+        font-style: italic;
+    }
+
+    h3 {
+        font-style: italic;
+        font-weight: normal;
+    }
+
+
+    p {
+        text-align: justify;
+        text-indent: 50px;
+    }
+
+    allIndent {
+        text-align: justify;
+        text-indent: 0px !important;
+        padding-left: 50px;
+    }
+
+    table {
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: 90%;
+        margin: 10px auto;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    table.col5 td {
+        width: 20%;
+    }
+
+    table.col6 td {
+        width: 16.6%;
+    }
+
+    table.col7 td {
+        width: 14%;
+    }
+
+    table.col8 td {
+        width: 12.5%;
+    }
+
+    table.col9 td {
+        width: 11%;
+    }
+
+    table.col10 td {
+        width: 10%;
+    }
+
+    td p {
+        padding: 0;
+        margin: 0;
+        width: 90%;
+    }
+
+    td p.fl {
+        text-indent: 0px !important;
+        text-align: left;
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+
+    td p.sl {
+        text-indent: 0px !important;
+        text-align: right;
+        margin-bottom: 5px;
+    }
+
+    .markGray {
+        background-color: rgb(202, 201, 201);
+        padding: 0px 5px;
+    }
+
+    .markRed {
+        background-color: rgb(250, 135, 135);
+        padding: 0px 5px;
+    }
+
+    .ec_calculator_gen {
+    text-align: center;
+    margin: 10px 20px;
+    padding: 5px;
+    background: #F7DC6F;
+    border-radius: 7px;
+    box-sizing: border-box;
+    }
+    
+    .ec_calculator_gen input[type=text], .ec_calculator_gen input[type=tel], .ec_calculator_gen input[type=number] {
+    background: #fff;
+    border-top: #ccc 1px solid;
+    border-left: #ccc 1px solid;
+    border-bottom: #b2aca5 1px solid;
+    border-right: #b2aca5 1px solid;
+    border-radius: 5px;
+    box-shadow: 0 -2px 5px -4px rgb(0 0 0 / 30%);
+    font-family: Tahoma,Geneva,sans-serif;
+    color: #717070;
+    font-size: 14px;
+    margin: 2px;
+    padding: 7px 5px;
+    box-sizing: border-box;
+    width: 99%;
+    }
+
+    .ec_calculator_gen input[type=reset], .ec_calculator_gen input[type=button] {
+    background: #4C4C4C;
+    border-radius: 7px;
+    text-align: center;
+    font-family: Arial,Helvetica,sans-serif;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    height: 38px;
+    cursor: pointer;
+    box-sizing: border-box;
+      width: 49%;
+}
+  </style>
+</head>
+
+<body >
+   <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
+      <div class="container">
+        <a href="index.html" class="navbar-brand"> Transportation Problem
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navmenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a href="nwcr.html" class="nav-link">NWCR</a>
+            </li>
+            <li class="nav-item">
+              <a href="lcm.html" class="nav-link">LCM</a>
+            </li>
+            <li class="nav-item">
+              <a href="vam.html" class="nav-link">VAM</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar -->
+
+  <!-- Showcase -->
+ <section>
+      <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between">
+          <div>
+            <h1 class="ttl">Transportation Problem <span class="text-warning"> Calculator </span></h1>
+            <p class="lead my-4">
+              Transportation Problem calculator 
+            </p>
+          </div>
+          
+
+        </div>
+      </div>
+    </section>
+     <!-- Showcase -->
+   <section>      
+      <div class="container-md">
+        <h1> What is Transportation Problem?</h1>
+    <p>The transportation problem (TP) (or transportation algorithm) is designed for a set of problems in which: (1) a product is transported at the lowest possible cost from several sources to several destinations; and (2) each source can supply a fixed number of units of the product, and each destination has a fixed demand for the product. Although the general transportation model may be used for a wide range of issues, the most well-known application is for the movement of products, from which the problem gets its name.</p>
+        <p> There are 2 types of transportation problems:</p>
+        <ol>
+          <li>Balanced transportation problem: The problem is considered to be a balanced transportation problem when both supplies and demands are equal.</li>
+          <li>Unbalanced transportation problem: Unbalanced transportation is defined as a situation in which supply and demand are not equal. A fake row or a dummy column is added to this sort of issue, depending on the necessity, to make it a balanced problem. The problem may then be addressed in the same way as the balanced problem.</li>
+        </ol>
+        <p>The goal is to create an integrated transportation system that satisfies all criteria at the lowest possible overall shipping cost. The Supply and Demand of the items must be equal, which is an essential feature in the Transportation algorithm. To achieve the lowest possible overall shipping cost, an Initial Basic Feasible Solution (IBFS) must be determined and tested for optimality - whether the result has the best outcome.</p>
+          <h2>Some Different Methods to Find IBFS:</h2>
+    <ol>
+        <li> <a href="nwcr.html" class="nav-link">North-West Corner Rule (NWCR)</a></li>
+      <li><a href="lcm.html" class="nav-link">Least Cost Method (LCM)</a></li>
+       <li><a href="vam.html" class="nav-link">Vogel's Approximation Method (VAM)</a></li>
+        </ol>
+
+        <p>Starting matrix for transportation problem can be shown as </p>
+    <table class="styled-table">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl"><b>D<sub>1</sub></b></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"><b>D<sub>2</sub></b></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"><b>...</b></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+            <p class="fl"><b>D<sub>n</sub></b></p>
+            <p class="sl"> &nbsp;</p>
+          </td>
+            <td>
+                <p class="fl"><b>SUP</b></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl"><b>S<sub>1</sub></b></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">C<sub>11</sub></p>
+                <p class="sl"> <b>X<sub>11</sub></b></p>
+            </td>
+            <td>
+                <p class="fl">C<sub>12</sub></p>
+                <p class="sl"><b>X<sub>12</sub></b> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">...</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+            <p class="fl">C<sub>1n</sub></p>
+            <p class="sl"><b>X<sub>1n</sub></b> &nbsp;</p>
+          </td>
+            <td>
+                <p class="fl">a<sub>1</sub></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">S<sub>1</sub></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">C<sub>21</sub></p>
+                <p class="sl"><b>X<sub>21</sub></b> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">C<sub>22</sub></p>
+                <p class="sl"><b>X<sub>22</sub></b>  &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">... </p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+            <p class="fl">C<sub>2n</sub></p>
+            <p class="sl"><b>X<sub>2n</sub></b> &nbsp;</p>
+          </td>
+            <td>
+                <p class="fl">a<sub>2</sub></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">...</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"><sub>...</sub></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">...</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+            <p class="fl"></p>
+            <p class="sl"> &nbsp;</p>
+          </td>
+            <td>
+                <p class="fl">...</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">...</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+      <tr>
+            <td>
+                <p class="fl"><b>S<sub>m</sub></b></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">C<sub>m1</sub></p>
+                <p class="sl"><b>X<sub>m1</sub></b> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">C<sub>m2</sub></p>
+                <p class="sl"><b>X<sub>m2</sub></b>  &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">... </p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+            <p class="fl">C<sub>mn</sub></p>
+            <p class="sl"><b>X<sub>mn</sub></b> &nbsp;</p>
+          </td>
+            <td>
+                <p class="fl">a<sub>j</sub></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl"><b>Dem</b> </p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">b<sub>1</sub></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">b<sub>2</sub></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+            <p class="fl">....</p>
+            <p class="sl"> &nbsp;</p>
+          </td>
+            <td>
+                <p class="fl">b<sub>j</sub></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">total</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+
+      <h2>Ex: use 3 methods to solve the given table</h2>
+
+
+        <div class="accordion accordion-flush" id="accordionFlushExample"> 
+          <div class="accordion-item">    
+            <h2 class="accordion-header" id="flush-headingOne">     
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+        1. North-West Corner Rule (NWCR)     
+              </button>    
+            </h2>    
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">      
+              <div class="accordion-body">
+                <h2>Steps North-West Corner Rule:</h2>
+    <ol>
+        <li>Start on the upper left corner cell of the transportation matrix and allocate minimum (A<sub>1</sub>, B<sub>1</sub>) </li>
+        <li>
+
+          <ol>
+            <li>a.Subtract this value from supply and demand of respect row and column </li>
+            <li>“If supply” is zero, then cross that row and move down to the next cell</li>
+            <li>If “demand” is zero, then cross that column and move right to the next cell</li>
+            <li>If “supply” and “demand” both are zero, then cross both row and column and move diagonally to the next cell</li>
+          </ol>
+    </li>
+        <li>Repeat the steps until all Supply and Demand values are 0.</li>
+    </ol>
+    <p>(Note that the null row is added to make supply and demand values equal.)</p>
+
+                <h2>Example</h2>
+
+    <p class="allIndent">Solve the transportation matrix by using North-West Corner Rule:<br /><br />
+        Total number of “supply” constraints: 3<br />
+        Total number of “demand” constraints: 4<br />
+        Problem table is
+    </p>
+
+    <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">12</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">17</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+      <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">11</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+
+    <h3>1<sup>st</sup> step:</h3>
+    <p class="allIndent">
+      The Values for (supply) A<sub>1</sub> is 12 & (demand) B<sub>1</sub> is 10.<br/>      
+        When compared, the smaller of two i.e., min (12, 10) is 10.  So, 10 is assigned to cell C<sub>11</sub>.<br/>
+        This meets the complete “Demand” of B<sub>1</sub> and leaves A<sub>1</sub> as 2 units (12 - 10 =2)<br/>    
+    </p>
+    <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">17</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+      <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">11</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+
+    <h3>2<sup>nd</sup> step:</h3>
+    <p class="allIndent">
+      Continue with the next available cell: C<sub>12</sub>
+      The Values for (supply) A<sub>1</sub> is 2 & (demand) B<sub>2</sub> is 10.<br/>      
+        When compared, the smaller of two i.e., min (2, 10) is 2.  So, 2 is assigned to cell C<sub>12</sub>.<br/>
+        This meets the complete “Supply” of A<sub>1</sub> and leaves B<sub>2</sub> as 8 (10-2=8)<br/>     
+    </p>
+                <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl"> 2&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">17</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+      <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">11</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">8</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+    
+
+    <h3>3<sup>rd</sup> step:</h3>
+    <p class="allIndent">
+      Continue with the next available cell: C<sub>22</sub></br>
+      The Values for (supply) A<sub>2</sub> is 17 & (demand) B<sub>2</sub> is 8.<br/>      
+        When compared, the smaller of two i.e., min (17, 8) is 8.  So, 8 is assigned to cell C<sub>22</sub>.<br/>
+        This meets the complete “Demand” of B<sub>2</sub> and leaves A<sub>2</sub> as 9 units (17 - 8 = 9)<br/>     
+    </p>
+    <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl"> 2&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl">8 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">9</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+      <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">11</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+
+    <h3>4<sup>th</sup> step:</h3>
+   <p class="allIndent">
+      Continue with the next available cell: C<sub>23</sub></br>
+      The Values for (supply) A<sub>2</sub> is 9 & (demand) B<sub>3</sub> is 10.<br/>      
+        When compared, the smaller of two i.e., min (10, 9) is 9.  So, 9 is assigned to cell C<sub>23</sub>.<br/>
+        This meets the complete “Supply” of A<sub>2</sub> and leaves B<sub>3</sub> as 1 units (10 - 9 = 1)<br/>     
+    </p>
+   <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl"> 2&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl">8 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> 9&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+      <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">11</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+
+        <h3>5<sup>th</sup> step:</h3>
+   <p class="allIndent">
+      Continue with the next available cell: C<sub>33</sub></br>
+      The Values for (supply) A<sub>3</sub> is 11 & (demand) B<sub>3</sub> is 1.<br/>      
+        When compared, the smaller of two i.e., min (11, 1) is 1.  So, 1 is assigned to cell C<sub>33</sub>.<br/>
+        This meets the complete “Demand” of B<sub>3</sub> and leaves A<sub>3</sub> as 10 (11-1=10)<br/>     
+    </p>
+                <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl"> 2&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl">8 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> 9&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">9</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+      <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">1 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+               
+                <h3>6<sup>th</sup> step:</h3>
+   <p class="allIndent">
+      Continue with the next available cell: C<sub>34</sub></br>
+      The Values for (supply) A<sub>3</sub> is 11 & (demand) B<sub>4</sub> is 10.<br/>      
+        When compared, the smaller of two i.e., min (10, 10) is 10.  So, 10 is assigned to cell C<sub>33</sub>.<br/>
+        This meets the complete “Demand” of B<sub>4</sub> and A<sub>3</sub> <br/>     
+    </p>
+                <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl"> 2&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl">8 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> 9&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+      <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">1 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl"> 10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+    
+
+    <h3>7<sup>th</sup> step:</h3>
+    <p class="allIndent">
+        Our initial basic feasible table is
+    </p>
+    <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl"> 10</p>
+            </td>
+            <td>
+                <p class="fl">750&nbsp;</p>
+                <p class="sl">2&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"></p>
+                <p class="sl"></p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800&nbsp;</p>
+                <p class="sl">8 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> 9</p>
+            </td>
+            <td>
+                <p class="fl"></p>
+                <p class="sl"></p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"></p>
+                <p class="sl"></p>
+            </td>
+            <td>
+                <p class="fl">500&nbsp;</p>
+                <p class="sl">1&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl">10</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+    <p class="allIndent">
+        To calculate the min transportation cost we multiply the min cost value and the unit value in each cell and sum
+        up all the values: <br /><br />
+
+        (500*10) + (750*2) + (800*8) + (400*9) + (500*1) + (550*10)= 22500 IBFS.
+    </p>
+              </div> 
+            </div>          
+          </div>           
+        </div>          
+        <div class="accordion-item">    
+          
+          <h2 class="accordion-header" id="flush-headingTwo">    
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+        2. Least Cost Method (LCM)     
+              </button>    
+            </h2>    
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">     
+              <div class="accordion-body"> 
+                <h2>Steps for Least Cost Method:</h2>
+    <ol>
+        <li>Choose the cell with the minimum unit cost, C<sub>ij</sub>, and allocate as much as possible, i.e., 
+ minimum (A<sub>1</sub>, B<sub>1</sub>) </li>
+        <li>
+    </break>
+          <ol>
+            <li>Take this minimum value and subtract it from supply A<sub>i</sub> and demand B<sub>i</sub> </li>
+            <li>Cross that row if the supply A<sub>i</sub>  is 0, and cross that column if the demand B<sub>i</sub> is 0. </li>
+            <li>If the min unit cost cell is not unique, choose the cell with the highest possible allocation. </li>            
+          </ol>
+    </li>
+        <li>Repeat the steps until all Supply and Demand values are 0.</li>
+    </ol>
+    <p>(Note that the null row is added to make supply and demand values equal.)</p>
+  
+<p> remember, no allocation can be negative (-) but might be 0.</p>
+    
+        <h2>Example</h2>
+
+    <p class="allIndent">Solve the transportation matrix by using Least-Cost Method:<br /><br />
+        Total number of “supply” constraints: 3<br />
+        Total number of “demand” constraints: 4<br />
+        Problem table is
+    </p>
+
+    <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">12</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">17</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">11</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+        
+<h2>Solution</h2>
+        
+    <h3>1<sup>st</sup> step:</h3>
+    <p class="allIndent">
+        The smallest transportation cost is “300” in cell C<sub>13</sub><br />
+        The allocation to this cell in min (10,12) = 10.<br/>
+        This satisfies the entire demand of B<sub>3</sub> and leaves 12-10=2 units with A<sub>1<br/>
+    </p>
+    <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl"> 10&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl">&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">17</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500/p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">11</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+
+    <h3>2<sup>nd</sup> step:</h3>
+    <p class="allIndent">
+        The smallest transportation cost is “400” in cell C<sub>31</sub>.
+        The allocation to this cell in min (11,10) = 10<br/>
+        This satisfies the entire "Demand" of B<sub>1</sub> and leaves 11-10=1 units for A<sub>3<br/>
+    </p>
+        
+    <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl"> 10&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl">&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">17</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> 10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl">&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+
+    <h3>3<sup>rd</sup> step:</h3>
+    <p class="allIndent">
+        The smallest transportation cost is “450” in cell C<sub>14</sub> <br/>
+        The allocation to this cell in min (10,2) = 2<br/>
+        This satisfies the entire "Supply" of A<sub>1</sub> and leaves 10-2=8 units for B<sub>4<br/>
+    </p>
+        
+    <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl">10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl">2&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl">&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">17</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> 10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">8</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+
+    <h3>4<sup>th</sup> step:</h3>
+    <p class="allIndent">
+        The smallest transportation cost is “550” in cell C<sub>34</sub> <br/>
+        The allocation to this cell in min (1,8) = 1<br/>
+        This satisfies the entire "Supply" of A<sub>3</sub> and leaves 8-1=7 units for B<sub>4<br/>
+    </p>
+        
+    <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl"> 10&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl">2&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">17</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl">&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> 10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl">1 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">7</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+
+    <h3>5<sup>th</sup> step:</h3>
+          <p class="allIndent">
+        The smallest transportation cost is “600” in cell C<sub>24</sub> <br/>
+        The allocation to this cell in min (17,7) = 7<br/>
+        This satisfies the entire "Demand" of B<sub>4</sub> and leaves 17-7=10 units for A<sub>2<br/>
+    </p>
+        
+    <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl"> 10&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl">2&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl"> / &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl"> 7&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> 10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl">1 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+          
+    <h3>6<sup>th</sup> step:</h3>
+           <p class="allIndent">
+        The smallest transportation cost is “800” in cell C<sub>22</sub> <br/>
+        The allocation to this cell in min (10,10) = 10<br/>
+        This satisfies the entire "Demand" of B<sub>2</sub> and A<sub>2<br/>
+    </p>
+        
+    <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl"> 10&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl">2&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl"> / &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl"> 10&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl"> 7&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> 10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl"> /&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl">1 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+
+    <h3>7<sup>th</sup> step:</h3>
+    <p class="allIndent">
+        Our initial basic feasible table is
+    </p>
+    <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"></p>
+                <p class="sl"></p>
+            </td>
+            <td>
+                <p class="fl"></p>
+                <p class="sl">  &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl"> 10&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl">2</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl">10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"></p>
+                <p class="sl"></p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl">7</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> 10&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"></p>
+                <p class="sl"></p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl"> 1</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+    <p class="allIndent">
+        To calculate the min transportation cost we multiply the min cost value and the unit value in each cell and sum
+        up all the values: <br /><br />
+
+        (400*10) + (800*10) + (300*10) + (450*2) + (600*7) + (550*1) = 20650 IBFS.
+    </p>   
+            </div> 
+          </div>  
+          <div class="accordion-item">   
+            <h2 class="accordion-header" id="flush-headingThree">      
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+        3. Vogel's Approximation Method (VAM)     
+              </button>   
+            </h2>    
+            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">     
+              <div class="accordion-body">
+                <h2>Vogel’s Approximation Method steps:</h2>
+    <ol>
+        <li>Start with calculating the difference of small cost and next higher to the smallest cost for each row and
+            column. These differences are called the row and column penalties respectively</li>
+        <li>Take the difference of two smallest numbers in each raw and write it in the row penalty</li>
+        <li>Take the difference of the two smallest numbers in each column and write it in the column penalty </li>
+        <li> Select the highest penalty and observe the corresponding row and column then allocate min (A<sub>i</sub>,
+            B<sub>j</sub>) in
+            the cell having the lowest cost in the select row and column.</li>
+        <li>Ignored satisfied row or column for further consideration. Calculate fresh penalties for remaining sub
+            metrics (m) in the same manner</li>
+        <li>Repeat the steps until all Supply and Demand values are 0.</li>
+    </ol>
+    <p>(Note that the null row is added to make supply and demand values equal)</p>
+
+    <h2>Example</h2>
+
+    <p class="allIndent">Solve the transportation matrix by using Vogel's Approximation Method:<br /><br />
+        Total number of “supply” constraints: 3<br />
+        Total number of “demand” constraints: 4<br />
+        Problem table is
+    </p>
+
+    <table class="col6">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">12</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">17</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">11</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+        
+<h2>Solution</h2>
+
+    <h3>1<sup>st</sup> step:</h3>
+    <p class="allIndent">
+        Take the difference of the two smallest values in each row and write it in the row
+        penalty.<br />
+        For 1<sup>st</sup> row, min values are C<sub>13</sub> (300) and C<sub>14</sub>(450): 450 - 300 = 150<br />
+        For the 2<sup>nd</sup> row, min values are C<sub>23</sub>(400) and C<sub>24</sub>(600): 600 - 400 = 200<br />
+        For 3<sup>rd</sup> row, min values are C<sub>31</sub> (400) and C<sub>33</sub> (500) : 500 - 400 = 100 <br />
+    </p>
+    <table class="col7">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">12</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450 - 300 = <span class="markGray">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">17</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600-400 = <span class="markGray">200</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">11</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500-400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">=40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+
+    <h3>2<sup>nd</sup> step:</h3>
+    <p class="allIndent">
+        Take the difference of the two smallest values in each row and write it in the row penalty.<br />
+        For 1<sup>st</sup> column, min values are C<sub>11</sub>(500) and C<sub>31</sub> (400): 500 -400 = 100<br />
+        For 2<sup>nd</sup> column, min values are C<sub>12</sub> (750) and C<sub>32</sub> (700): 750 - 700 = 50<br />
+        For 3<sup>rd</sup> column, min values are C<sub>13</sub> (300) and C<sub>23</sub>(400): 400 - 300 = 100<br />
+        For 4<sup>th</sup> column, min values are C<sub>14</sub> (450) and C<sub>34</sub> (550): 550 - 450 = 100<br />
+    </p>
+    <table class="col7">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">12</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450 - 300 = <span class="markGray">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">17</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600-400 = <span class="markGray">200</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">11</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500-400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">=40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">Column Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> 500 - 400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750 - 700 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400 - 300 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550 - 450 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+
+    <h3>3<sup>rd</sup> step:</h3>
+    <p class="allIndent">
+        Select the row or column with the maximum penalty and find the one that has the least cost in the selected row
+        or column. Allocate as much as possible in this cell.
+        If there is a tie in the values of penalties, then select the cell where maximum allocation can be
+        possible:<br /><br />
+
+        The maximum penalty is “200” which occurs in column B<sub>3</sub>.<br />
+        The minimum C<sub>ij</sub> in this column is C<sub>23</sub> = 400.<br />
+        The maximum allocation in this cell is min (17,10) = 10<br />
+        When the minimum value “10” is replaced to cell C<sub>23</sub> & it satisfies the demand of B<sub>3</sub> and
+        adjusts the supply of A<sub>2</sub> from 17 to 7 (17 - 10 = 7)
+    </p>
+                <table class="col7">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">12</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450 - 300 = <span class="markGray">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> 10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">7</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600-400 = <span class="markRed">200</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">11</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500-400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">=40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">Column Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> 500 - 400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750 - 700 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400 - 300 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550 - 450 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+   
+
+    <h3>4<sup>th</sup> step:</h3>
+    <p class="allIndent">
+        (Repeat step 1)<br /><br />
+        Take the difference of the two smallest values in each row and write it in the row
+        penalty.<br />
+        For 1<sup>st</sup> row, min values are C<sub>11</sub> (500) and C<sub>14</sub>(450) (min values are changes): 500-450 =50<br />
+        For the 2<sup>nd</sup> row, min values are C<sub>21</sub>(650) and C<sub>24</sub>(600) (min values are changes):
+        650-600=50<br />
+        For 3<sup>rd</sup> row, min values are C<sub>31</sub> (550) and C<sub>34</sub> (400) (min values are changes):
+        550-400=150<br />
+    </p>
+                <table class="col7">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">12</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450 - 300 = <span class="markGray">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">500 - 450 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> 10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">7</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600-400 = <span class="markRed">200</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">650 - 600 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">11</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500-400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">550 - 400 = <span class="markGray">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">=40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">Column Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> 500 - 400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750 - 700 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400 - 300 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550 - 450 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+    </table>
+                
+    
+
+    <h3>5<sup>th</sup> step:</h3>
+    <p class="allIndent">
+        (Repeat step 2)<br /><br />
+                Take the difference of the two smallest values in each row and write it in the row penalty.<br />
+        For 1<sup>st</sup> column, min values are C<sub>11</sub>(500) and C<sub>31</sub> (400): 500 -400 = 100<br />
+        For 2<sup>nd</sup> column, min values are C<sub>12</sub> (750) and C<sub>32</sub> (700): 750 - 700 = 50<br />
+        For 3<sup>rd</sup> column, min values are C<sub>ij</sub> and C<sub>ij</sub> (B<sup>3</sup> is satisfied)<br />
+        For 4<sup>th</sup> column, min values are C<sub>14</sub> (450) and C<sub>34</sub> (550): 550 - 450 = 100<br />
+    
+    </table>
+                <table class="col7">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">12</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450 - 300 = <span class="markGray">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">500 - 450 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> 10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">7</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600-400 = <span class="markRed">200</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">650 - 600 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">11</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500-400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">550 - 400 = <span class="markGray">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">=40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">Column Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> 500 - 400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750 - 700 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400 - 300 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550 - 450 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+              <tr>
+            <td>
+                <p class="fl">Column Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> 500 - 400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750 - 700 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> - </p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550 - 450 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>    
+    </table>
+
+    <h3>6<sup>th</sup> step:</h3>
+    <p class="allIndent">
+        (Repeat step 3)<br /><br />
+        The maximum penalty is “150” which occurs in column A<sub>3</sub>.<br />
+        The minimum C<sub>ij</sub> in this column is C<sub>31</sub> = 400.<br />
+        The maximum allocation in this cell is min (10,11) = 10<br />
+        When the minimum value “10” is replaced to cell C<sub>31</sub> & it satisfies the demand of B<sub>1</sub> and
+        adjusts the supply of A<sub>1</sub> from 11 to 1 (11 - 10 = 1)
+    </p>
+   </table>
+                <table class="col7">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">12</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450 - 300 = <span class="markGray">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">500 - 450 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> 10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">7</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600-400 = <span class="markRed">200</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">650 - 600 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl">10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500-400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">550 - 400 = <span class="markRed">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">=40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">Column Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> 500 - 400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750 - 700 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400 - 300 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550 - 450 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+              <tr>
+            <td>
+                <p class="fl">Column Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> 500 - 400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750 - 700 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> - </p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550 - 450 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>    
+    </table>
+
+
+    <h3>7<sup>th</sup> step:</h3>
+                <p class="allIndent">
+        (Repeat step 1)<br /><br />
+        Take the difference of the two smallest values in each row and write it in the row
+        penalty.<br />
+        For 1<sup>st</sup> row, min values are C<sub>12</sub> (750) and C<sub>14</sub>(450) (min values are changes): 750-450 =300<br />
+        For the 2<sup>nd</sup> row, min values are C<sub>22</sub>(800) and C<sub>24</sub>(600) (min values are changes):
+        800-600=200<br />
+        For 3<sup>rd</sup> row, min values are C<sub>32</sub> (700) and C<sub>34</sub> (550) (min values are changes):
+        700-550=150<br />
+    </p>
+                 </table>
+                <table class="col7">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">12</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450 - 300 = <span class="markGray">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">500 - 450 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">750 - 450 = <span class="markGray">300</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> 10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">7</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600-400 = <span class="markRed">200</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">650 - 600 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">800 - 600 = <span class="markGray">200</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl">10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500-400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">550 - 400 = <span class="markRed">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">700 - 550 = <span class="markGray">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">=40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">Column Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> 500 - 400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750 - 700 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400 - 300 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550 - 450 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+              <tr>
+            <td>
+                <p class="fl">Column Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> 500 - 400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750 - 700 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> - </p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550 - 450 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+                <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>    
+    </table>
+    
+
+    <h3>8<sup>th</sup> step:</h3>
+    <p class="allIndent">
+        (Repeat step 2)<br /><br />
+        Take the difference of the two smallest values in each row and write it in the row penalty.<br />
+        For 1<sup>st</sup> column, min values are C<sub>ij</sub> and C<sub>ij</sub> (B<sub>1</sub> is satisfied)"-"<br />
+      For 2<sup>nd</sup> column, min values are C<sub>12</sub> (750) and C<sub>32</sub>(700): 750 - 700 = 50<br />
+        For the 3<sup>rd</sup> column, min values are C<sub>ij</sub> and C<sub>ij</sub> (B<sub>3</sub>) is
+        satisfied"-"<br />
+        
+        For 4<sup>th</sup> column, min values are C<sub>14</sub> (550) and C<sub>34</sub> (450): 550 - 450 = 100<br />
+    </p>
+    <table class="col7">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">12</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450 - 300 = <span class="markGray">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">500 - 450 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">750 - 450 = <span class="markGray">300</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> 10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">7</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600-400 = <span class="markRed">200</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">650 - 600 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">800 - 600 = <span class="markGray">200</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl">10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500-400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">550 - 400 = <span class="markRed">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">700 - 550 = <span class="markGray">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">=40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">Column Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> 500 - 400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750 - 700 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400 - 300 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550 - 450 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+              <tr>
+            <td>
+                <p class="fl">Column Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> 500 - 400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750 - 700 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> - </p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550 - 450 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+                <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>  
+      <tr>
+            <td>
+                <p class="fl">Column Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">-</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750 - 700 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> - </p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550 - 450 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+                <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>  
+    </table>
+
+    <h3>9<sup>th</sup> step:</h3>
+    <p class="allIndent">
+        (Repeat step 3)<br /><br />
+        The maximum penalty is “300” which occurs in column A<sub>1</sub>.<br />
+        The minimum C<sub>ij</sub> in this column is C<sub>14</sub> = 450.<br />
+        The maximum allocation in this cell is min (12,10) = 10<br />
+        When the minimum value “10” is replaced to cell C<sub>14</sub> & it satisfies the demand of B<sub>4</sub> and
+        adjusts the supply of A<sub>1</sub> from 12 to 2 (12 - 10 = 2)
+    </p>
+    <table class="col7">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl"> 10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450 - 300 = <span class="markGray">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">500 - 450 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">750 - 450 = <span class="markRed">300</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> 10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">7</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600-400 = <span class="markRed">200</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">650 - 600 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">800 - 600 = <span class="markGray">200</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl">10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500-400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">550 - 400 = <span class="markRed">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">700 - 550 = <span class="markGray">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">=40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">Column Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> 500 - 400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750 - 700 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400 - 300 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550 - 450 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+              <tr>
+            <td>
+                <p class="fl">Column Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> 500 - 400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750 - 700 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> - </p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550 - 450 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+                <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>  
+      <tr>
+            <td>
+                <p class="fl">Column Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">-</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750 - 700 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> - </p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550 - 450 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+                <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>  
+    </table>
+
+    <h3>10<sup>th</sup> step:</h3>
+    <p class="allIndent">
+        (Repeat step 1)<br /><br />
+        Take the difference of the two smallest values in each row and write it in the row
+        penalty.<br />
+        For 1<sup>st</sup> row, min values are C<sub>13</sub> (50) and C<sub>14</sub>(10) : 50-10=40<br />
+        For the 2<sup>nd</sup> row, min values are C<sub>23</sub>(40) and C<sub>24</sub>(60) : 60-40=20<br />
+        For 3<sup>rd</sup> row, min values are C<sub>ij</sub> and C<sub>ij</sub> : (A<sub>3</sub> is satisfied)
+        "-"<br />
+    </p>
+    <table class="col7">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl"> 10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450 - 300 = <span class="markGray">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">500 - 450 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">750 - 450 = <span class="markRed">300</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> 10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">7</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600-400 = <span class="markRed">200</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">650 - 600 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">800 - 600 = <span class="markGray">200</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl">10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500-400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">550 - 400 = <span class="markRed">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">700 - 550 = <span class="markGray">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">10</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">=40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">Column Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> 500 - 400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750 - 700 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400 - 300 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550 - 450 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+              <tr>
+            <td>
+                <p class="fl">Column Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> 500 - 400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750 - 700 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> - </p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550 - 450 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+                <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>  
+      <tr>
+            <td>
+                <p class="fl">Column Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">-</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750 - 700 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> - </p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550 - 450 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+                <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>  
+    </table>
+
+   
+
+    <h3>11<sup>th</sup> step:</h3>
+    <p class="allIndent">
+        The Last cells that are not filled are C<sub>12</sub> , C<sub>22</sub> & C<sub>32</sub>.<br />
+        For C<sub>13</sub>: min (2,10),so 2 is used. It satisfies the supply of A<sub>1</sub> and adjust the demand of B<sub>2</sub>
+        from 10 to 8 (10 – 2 = 8)<br />
+        For C<sub>22</sub>: min (7,8), so 7 is used. it satisfies the supply of A<sub>2</sub> and adjust the demand of B<sub>2</sub> from 8 to 1 (8 – 7 = 1).<br />
+      For C<sub>32</sub> the only value left is 1.<br />
+    </p>
+    <table class="col7">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">Row Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl"> 2 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">300</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl"> 10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450 - 300 = <span class="markGray">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">500 - 450 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">750 - 450 = <span class="markRed">300</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">650</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl">7 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> 10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">600-400 = <span class="markRed">200</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">650 - 600 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">800 - 600 = <span class="markGray">200</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl">10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl">1 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550</p>
+                <p class="sl">/ &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">500-400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">550 - 400 = <span class="markRed">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">700 - 550 = <span class="markGray">150</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">=40</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">Column Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> 500 - 400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750 - 700 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400 - 300 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550 - 450 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>
+              <tr>
+            <td>
+                <p class="fl">Column Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> 500 - 400 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750 - 700 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> - </p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550 - 450 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+                <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>  
+      <tr>
+            <td>
+                <p class="fl">Column Penalty</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">-</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750 - 700 = <span class="markGray">50</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"> - </p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">550 - 450 = <span class="markGray">100</span></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+          <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+                <td>
+                <p class="fl">&nbsp;</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+        </tr>  
+    </table>
+
+    <h3>12<sup>th</sup> step:</h3>
+    <p class="allIndent">
+        Our initial basic feasible table is
+    </p>
+    <table class="col7">
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">4</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">SUP</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">1</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">750</p>
+                <p class="sl">2 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">450</p>
+                <p class="sl"> 10&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">2</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">800</p>
+                <p class="sl">7 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl"> 10&nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+           
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">3</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">400</p>
+                <p class="sl">10 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">700</p>
+                <p class="sl">1 &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl"></p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            
+        </tr>
+        <tr>
+            <td>
+                <p class="fl">DEM</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            <td>
+                <p class="fl">0</p>
+                <p class="sl"> &nbsp;</p>
+            </td>
+            
+        </tr>
+    </table>
+    <p class="allIndent">
+        To calculate the min transportation cost we multiply the min cost value and the unit value in each cell and sum
+        up all the values: <br /><br />
+
+        The minimum transportation cost: (400*10) + (750*2) + (800*7) + (700*1) + (400*10) + (450*10) = 20300 IBFS.
+    </p>
+              </div>    
+            </div>  
+          </div>
+        </div>        
+      </div>  
+   </section>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	 crossorigin="anonymous">
+
+	</script>
+	<script src="script.js">
+
+	</script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"   integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="   crossorigin="anonymous"" >
+  </script>
+
+    <div class="mt-3 col-md-12">
+</div>
+
+  
+<footer class="text-white bg-dark">
+  <div class="text-center p-3" style="background-color: ">
+    2022 Thesis Project
+    <a class="text-dark" 
+  </div>
+</footer>
+  
+</body>
+</html>
